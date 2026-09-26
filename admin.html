@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mantenedor administrativo VESPER.">
+  <title>Mantenedor — VESPER</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/admin.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="announcement">PANEL ADMINISTRATIVO · VESPER</div>
+    <nav class="navbar navbar-expand-lg container" aria-label="Navegación principal">
+      <a class="navbar-brand" href="index.html">VESPER<span>夜</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+      <div id="main-menu" class="collapse navbar-collapse">
+        <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <a class="nav-link" href="index.html">Catálogo</a>
+          <a id="nav-admin" class="nav-link active" href="admin.html">Mantenedor</a>
+          <a class="nav-link" href="contacto.html">Contacto</a>
+          <span class="nav-link disabled"><span id="nav-user-name"></span> · <span id="nav-role" class="badge text-bg-secondary role-badge"></span></span>
+          <button id="logout-btn" class="btn btn-sm btn-outline-light" type="button">Cerrar sesión</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <header class="page-title">
+      <p class="eyebrow">ADMINISTRACIÓN</p>
+      <h1>Mantenedores</h1>
+      <p>Los cambios se guardan en <strong>Local Storage</strong>.</p>
+    </header>
+
+    <ul class="nav nav-tabs" id="admin-tabs" role="tablist">
+      <li class="nav-item" role="presentation"><button class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab">Usuarios</button></li>
+      <li class="nav-item" role="presentation"><button class="nav-link" id="productos-tab" data-bs-toggle="tab" data-bs-target="#productos" type="button" role="tab">Productos</button></li>
+    </ul>
+
+    <div class="tab-content py-4">
+      <section class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+        <div class="admin-grid">
+          <form id="user-form" class="panel">
+            <h2 id="user-form-title" class="h4">Nuevo usuario</h2>
+            <input id="user-id" type="hidden">
+            <div class="mb-3"><label class="form-label" for="user-name">Nombre</label><input id="user-name" class="form-control" minlength="3" required></div>
+            <div class="mb-3"><label class="form-label" for="user-email">Correo</label><input id="user-email" class="form-control" type="email" required></div>
+            <div class="mb-3"><label class="form-label" for="user-password">Contraseña</label><input id="user-password" class="form-control" type="text" minlength="4" required></div>
+            <div class="mb-3"><label class="form-label" for="user-role">Rol</label><select id="user-role" class="form-select" required><option value="usuario">Usuario</option><option value="admin">Administrador</option></select></div>
+            <p id="user-message" class="small" aria-live="polite"></p>
+            <div class="d-flex gap-2"><button class="btn btn-vesper" type="submit">Guardar</button><button id="cancel-user-edit" class="btn btn-outline-secondary" type="button" hidden>Cancelar</button></div>
+          </form>
+
+          <div>
+            <h2 class="h4">Usuarios registrados</h2>
+            <div class="table-responsive">
+              <table class="table table-striped align-middle">
+                <thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Acciones</th></tr></thead>
+                <tbody id="user-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-pane fade" id="productos" role="tabpanel" aria-labelledby="productos-tab">
+        <div class="admin-grid">
+          <form id="product-form" class="panel">
+            <h2 id="product-form-title" class="h4">Nuevo producto</h2>
+            <input id="product-id" type="hidden">
+            <div class="mb-3"><label class="form-label" for="product-name">Nombre</label><input id="product-name" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label" for="product-category">Categoría</label><select id="product-category" class="form-select" required><option value="Polera">Polera</option><option value="Polerón">Polerón</option><option value="Accesorio">Accesorio</option></select></div>
+            <div class="mb-3"><label class="form-label" for="product-price">Precio</label><input id="product-price" class="form-control" type="number" min="1" required></div>
+            <div class="mb-3"><label class="form-label" for="product-description">Descripción</label><textarea id="product-description" class="form-control" rows="3" required></textarea></div>
+            <div class="mb-3"><label class="form-label" for="product-image">Ruta de imagen</label><input id="product-image" class="form-control" value="assets/img/sopranos-hoodie-real.png" required><div class="form-text">Ejemplo: assets/img/sopranos-hoodie-real.png</div></div>
+            <p id="product-message" class="small" aria-live="polite"></p>
+            <div class="d-flex gap-2"><button class="btn btn-vesper" type="submit">Guardar</button><button id="cancel-product-edit" class="btn btn-outline-secondary" type="button" hidden>Cancelar</button></div>
+          </form>
+
+          <div>
+            <h2 class="h4">Productos registrados</h2>
+            <div class="table-responsive">
+              <table class="table table-striped align-middle">
+                <thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Acciones</th></tr></thead>
+                <tbody id="product-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><strong>VESPER夜</strong><span>© <span data-year></span> · Proyecto académico DSY1104</span></div></footer>
+</body>
+</html>

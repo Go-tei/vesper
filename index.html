@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de productos VESPER.">
+  <title>Catálogo — VESPER</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/catalogo.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="announcement">DROP 001 · SANTIAGO, CHILE · STREETWEAR / CULTURA POP</div>
+    <nav class="navbar navbar-expand-lg container" aria-label="Navegación principal">
+      <a class="navbar-brand" href="index.html">VESPER<span>夜</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="main-menu" class="collapse navbar-collapse">
+        <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <a class="nav-link active" href="index.html">Catálogo</a>
+          <a id="nav-cart" class="nav-link" href="carrito.html">Carrito <span id="cart-count" class="badge text-bg-danger">0</span></a>
+          <a id="nav-admin" class="nav-link" href="admin.html">Mantenedor</a>
+          <a class="nav-link" href="contacto.html">Contacto</a>
+          <span class="nav-link disabled"><span id="nav-user-name"></span> · <span id="nav-role" class="badge text-bg-secondary role-badge"></span></span>
+          <button id="logout-btn" class="btn btn-sm btn-outline-light" type="button">Cerrar sesión</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="vesper-carousel" class="carousel slide hero-carousel" data-bs-ride="carousel" aria-label="Carrusel Vesper">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#vesper-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#vesper-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#vesper-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assets/img/sopranos-hoodie-real.png" alt="Polerón The Sopranos Noir">
+          <div class="carousel-caption">
+            <p class="eyebrow text-light">DROP 002</p>
+            <h1>Cultura pop convertida en streetwear.</h1>
+            <p>Series, cine, música, anime y gaming reinterpretados para VESPER.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/twinpeaks-tee-real.png" alt="Polera Twin Peaks Red Room">
+          <div class="carousel-caption">
+            <h2>TWIN PEAKS RED ROOM</h2>
+            <p>Misterio, surrealismo y prenda con look de merch real.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/eva-hoodie-real.png" alt="Polerón Evangelion Test Type-01">
+          <div class="carousel-caption">
+            <h2>EVANGELION TEST TYPE-01</h2>
+            <p>Estética mecha y diseño streetwear de alto impacto.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#vesper-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#vesper-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </section>
+
+    <section class="container section-pad" aria-labelledby="catalog-title">
+      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+        <div>
+          <p class="eyebrow">CATÁLOGO</p>
+          <h2 id="catalog-title" class="display-6 fw-bold">Productos</h2>
+          <p id="catalog-status" class="mb-0" aria-live="polite"></p>
+        </div>
+        <div class="row g-2" style="max-width:650px;width:100%">
+          <div class="col-md-6">
+            <label for="filtro-texto" class="form-label">Buscar</label>
+            <input id="filtro-texto" class="form-control" type="search" placeholder="Nombre o descripción">
+          </div>
+          <div class="col-md-6">
+            <label for="filtro-categoria" class="form-label">Categoría</label>
+            <select id="filtro-categoria" class="form-select">
+              <option value="todos">Todas</option>
+              <option value="Polera">Poleras</option>
+              <option value="Polerón">Polerones</option>
+              <option value="Accesorio">Accesorios</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="catalog-alert" class="alert alert-success" role="status" hidden></div>
+      <div id="catalogo-productos" class="row g-4"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><strong>VESPER夜</strong><br><small>Streetwear inspirado en cultura pop.</small></div>
+      <div>© <span data-year></span> VESPER · Proyecto académico DSY1104</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="t d">
+<title id="t">RITUAL 001</title><desc id="d">Gráfica original de Vesper para la colección Ritual 001.</desc>
+<rect width="800" height="1000" fill="#d9ff43"/>
+<rect x="46" y="46" width="708" height="908" fill="none" stroke="#0b0b0d" stroke-width="3"/>
+<path d="M80 160 H720 M80 820 H720" stroke="#0b0b0d" stroke-width="2"/>
+<circle cx="400" cy="470" r="185" fill="none" stroke="#0b0b0d" stroke-width="2"/>
+<circle cx="400" cy="470" r="118" fill="none" stroke="#0b0b0d" stroke-width="2" stroke-dasharray="12 10"/>
+<path d="M400 278 L538 645 L262 645 Z" fill="none" stroke="#0b0b0d" stroke-width="4"/>
+<path d="M215 470 H585 M400 285 V655" stroke="#0b0b0d" stroke-width="1.5" opacity=".7"/>
+<text x="80" y="120" fill="#0b0b0d" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" letter-spacing="8">VESPER / 001</text>
+<text x="80" y="760" fill="#0b0b0d" font-family="Georgia, serif" font-size="82" letter-spacing="-2">RITUAL</text>
+<text x="80" y="866" fill="#0b0b0d" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">VESPER / FIRST SIGNAL</text>
+<text x="720" y="915" fill="#0b0b0d" font-family="Arial, Helvetica, sans-serif" text-anchor="end" font-size="18">夜 / 2026</text>
+</svg>

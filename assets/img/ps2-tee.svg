@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="960" viewBox="0 0 800 960" role="img" aria-label="PS2 Polera">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060915"/>
+      <stop offset="100%" stop-color="#111936"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.04"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="800" height="960" fill="url(#g)"/>
+  <rect width="800" height="960" filter="url(#grain)" opacity="0.7"/>
+  <circle cx="655" cy="150" r="110" fill="#5f7cff" opacity="0.16"/>
+  <circle cx="145" cy="790" r="130" fill="#5f7cff" opacity="0.10"/>
+  <rect x="52" y="52" width="696" height="856" rx="28" fill="none" stroke="#eef4ff" stroke-opacity="0.22" stroke-width="2"/>
+  <text x="76" y="110" fill="#eef4ff" font-size="22" font-family="Arial, Helvetica, sans-serif" letter-spacing="5">VESPER DROP / CULTURA POP</text>
+  <text x="76" y="170" fill="#eef4ff" font-size="64" font-weight="700" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">PS2</text>
+  <text x="76" y="218" fill="#5f7cff" font-size="24" font-weight="700" font-family="Arial, Helvetica, sans-serif" letter-spacing="4">POLERA</text>
+  <g transform="translate(150 270)">
+    <rect x="0" y="0" width="500" height="420" rx="26" fill="#000000" opacity="0.14"/>
+
+    <path d="M162 72 L338 72 L386 126 L454 168 L420 244 L378 224 L378 388 L122 388 L122 224 L80 244 L46 168 L114 126 Z" fill="none" stroke="#eef4ff" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M216 72 C228 112 272 112 284 72" fill="none" stroke="#5f7cff" stroke-width="12" stroke-linecap="round"/>
+    <rect x="188" y="184" width="124" height="124" rx="18" fill="none" stroke="#5f7cff" stroke-width="10"/>
+    <line x1="188" y1="246" x2="312" y2="246" stroke="#5f7cff" stroke-width="8"/>
+
+  </g>
+  <text x="76" y="764" fill="#eef4ff" font-size="24" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">BOOT SEQUENCE / MEMORY / 2000s</text>
+  <text x="76" y="812" fill="#eef4ff" font-size="18" opacity="0.78" font-family="Arial, Helvetica, sans-serif">Mockup visual para catálogo académico. Imagen original creada para el proyecto.</text>
+  <text x="76" y="852" fill="#eef4ff" font-size="18" opacity="0.78" font-family="Arial, Helvetica, sans-serif">Uso: card de producto / preview de prenda / referencia estética.</text>
+</svg>
