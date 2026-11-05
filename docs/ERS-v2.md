@@ -1,12 +1,14 @@
 # VESPER — ERS actualizado (versión 2)
 
-**Asignatura:** DSY1104, Desarrollo Fullstack II\
-**Entrega:** Evaluación Parcial 2, frontend y pruebas unitarias\
-**Repositorio:** https://github.com/Go-tei/vesper\
-**Integrantes:** Enzo Carggiolis, Fernando Campos y Marcelo Perez.\
-**Sección:** DSY1104.\
-**Fecha de actualización:** 5 de noviembre de 2026.\
-**Fecha de presentación:** 5 de noviembre de 2026.
+| Datos de la entrega | Información |
+| --- | --- |
+| Asignatura | Desarrollo Fullstack II |
+| Entrega | Evaluación Parcial 2, frontend y pruebas unitarias |
+| Integrantes | Enzo Carggiolis, Fernando Campos y Marcelo Perez |
+| Sección | DSY1104 |
+| Fecha de presentación | 5 de noviembre de 2026 |
+| Fecha de actualización | 5 de noviembre de 2026 |
+| Repositorio | [Go-tei/vesper](https://github.com/Go-tei/vesper) |
 
 ## 1. Propósito y fuentes
 
