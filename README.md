@@ -27,6 +27,12 @@ Para los tests se necesita Chrome o Chromium instalado. En Linux se detecta `/us
 
 Antes de empaquetar la entrega: ejecutar `npm test` y `npm run build`, luego `npm run package`. El ZIP contiene código, documentación, pruebas, cobertura disponible y compilación; excluye `.git`, dependencias y archivos `.env`.
 
+## Ver la tienda publicada
+
+La tienda se publica en **https://go-tei.github.io/vesper/**.
+
+El workflow `.github/workflows/pages.yml` compila React con Vite y publica únicamente `dist/` después de cada cambio en `main`. En la configuración del repositorio, GitHub Pages debe utilizar **GitHub Actions** como origen; publicar directamente la raíz del repositorio sirve el código fuente y no ejecuta la aplicación.
+
 ## Cuentas de demostración
 
 | Rol | Correo | Contraseña |
