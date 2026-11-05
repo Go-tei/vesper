@@ -2,6 +2,8 @@
 
 Tienda de streetwear y cultura pop para **DSY1104 · Desarrollo Fullstack II**. Migración de la primera entrega HTML/JavaScript a React, con diseño Bootstrap, datos locales, compra simulada y administración.
 
+**Equipo:** Fernando, Enzo y Marcelo.
+
 ## Ejecutar
 
 Requisitos: **Node.js 22.12 o superior** y npm. Instalar dependencias con el lockfile:
@@ -67,8 +69,10 @@ La navegación usa **HashRouter** (`/#/productos`), por lo que funciona en hosti
 
 ## Documentación para entregar y presentar
 
-- [ERS actualizado V2](docs/ERS-v2.md): requisitos, aceptación y alcance.
-- [Cobertura del testing](docs/cobertura-testing.md): casos, resultados medidos y límites.
-- [Guía de presentación](docs/guia-presentacion.md): guion de 15 minutos y preguntas técnicas.
+- [ERS actualizado V2](docs/ERS-v2.md) · [PDF](docs/ERS-v2.pdf): requisitos, aceptación y alcance.
+- [Cobertura del testing](docs/cobertura-testing.md) · [PDF](docs/cobertura-testing.pdf): casos, resultados medidos y límites.
+- [Guía de presentación](docs/guia-presentacion.md) · [PDF](docs/guia-presentacion.pdf): recorrido de 15 minutos y preguntas técnicas.
+- [Guion de Fernando, Enzo y Marcelo](docs/guion-Fernando-Enzo-Marcelo.md) · [PDF para presentar](docs/guion-Fernando-Enzo-Marcelo.pdf): exposición repartida en tres bloques de cinco minutos.
+- [Publicación y revisión en GitHub](docs/subir-a-github.md): rama de entrega, pull request y pasos para integrarlo en `main`.
 
 La pauta solicita una base simulada en JavaScript. No se ha entregado ni implementado un backend HTTP o una pasarela de pagos. Si el docente exige integración real adicional, será una etapa distinta. Los comprobantes de esta aplicación son académicos y no tienen validez tributaria.

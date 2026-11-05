@@ -1,10 +1,12 @@
 # VESPER — Especificación de requisitos de software, versión 2
 
-**Asignatura:** DSY1104, Desarrollo Fullstack II  
-**Entrega:** Evaluación Parcial 2, frontend y pruebas unitarias  
-**Repositorio:** https://github.com/Go-tei/vesper  
-**Integrantes:** completar con los nombres del equipo y su sección.  
-**Fecha de presentación:** completar según el calendario del curso.
+**Asignatura:** DSY1104, Desarrollo Fullstack II\
+**Entrega:** Evaluación Parcial 2, frontend y pruebas unitarias\
+**Repositorio:** https://github.com/Go-tei/vesper\
+**Integrantes:** Fernando, Enzo y Marcelo.\
+**Sección:** por confirmar.\
+**Fecha de actualización:** 5 de noviembre de 2026.\
+**Fecha de presentación:** según el calendario del curso.
 
 ## 1. Propósito y fuentes
 
@@ -149,7 +151,7 @@ La cobertura se debe expresar con precisión: cantidad de casos ejecutados, func
 
 1. Repositorio público actualizado: `https://github.com/Go-tei/vesper`.
 2. Proyecto frontend comprimido con fuentes, archivos de configuración e instrucciones; excluir dependencias instaladas y datos privados.
-3. Esta ERS V2 con integrantes y fecha completados.
+3. Esta ERS V2, identificada con Fernando, Enzo y Marcelo; completar la sección y la fecha de presentación cuando estén confirmadas.
 4. Informe de cobertura de testing con casos, resultados, alcance y limitaciones reales.
 5. Presentación de 15 minutos y preparación para 5 minutos de preguntas individuales.
 
