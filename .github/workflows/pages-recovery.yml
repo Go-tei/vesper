@@ -1,0 +1,33 @@
+name: Recuperar publicación de Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_id:
+        description: ID del despliegue de Pages atascado que se debe cancelar
+        required: true
+        type: string
+
+permissions:
+  pages: write
+
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancelar el despliegue indicado
+        uses: actions/github-script@v7
+        env:
+          DEPLOYMENT_ID: ${{ inputs.deployment_id }}
+        with:
+          script: |
+            const deploymentId = process.env.DEPLOYMENT_ID;
+            if (!/^[a-zA-Z0-9_-]+$/.test(deploymentId)) {
+              throw new Error('Identificador de despliegue inválido.');
+            }
+            await github.request('POST /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pages_deployment_id: deploymentId
+            });
+            core.info('Se solicitó cancelar el despliegue atascado.');
