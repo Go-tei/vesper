@@ -1,0 +1,96 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>VESPER · Guion de presentación · Fernando, Enzo y Marcelo</title><style>@page{size:A4;margin:18mm 18mm 20mm}body{font:11pt/1.55 Arial,sans-serif;color:#222}h1{font-size:26pt;line-height:1.15;border-bottom:4px solid #a4141d;padding-bottom:14px}h2{font-size:18pt;line-height:1.25;color:#89151d;break-before:page;margin-top:0;break-after:avoid}h2:first-of-type{break-before:auto;margin-top:26px}p{orphans:3;widows:3;margin:0 0 11px}p:has(>em:only-child){background:#f2efea;border-left:3px solid #a4141d;padding:8px 11px;color:#585047;font-size:10pt;break-after:avoid}code{font-size:9.5pt;background:#f1efec;padding:1px 3px;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;font-size:10pt;margin:18px 0}td,th{border:1px solid #ccc;padding:8px;text-align:left;vertical-align:top}th{background:#f1efec}tr{break-inside:avoid}</style></head><body><h1>VESPER · Guion de presentación</h1>
+<p><strong>Fernando · Enzo · Marcelo</strong><br>Desarrollo Fullstack II · Segunda entrega<br><strong>Duración: 15 minutos · 5 minutos por integrante</strong></p>
+<p>El tiempo de cada bloque incluye la exposición y la demostración. Las indicaciones en cursiva sirven como apoyo y no se leen en voz alta.</p>
+<h2>1. Fernando — Introducción, React y tienda pública</h2>
+<p><strong>Tiempo: 0:00–5:00</strong></p>
+<p><em>Deja abierta la página principal.</em></p>
+<p>Buenos días. Somos Fernando, Enzo y Marcelo, y presentamos la segunda entrega de Vesper, nuestra tienda de ropa inspirada en cultura pop.</p>
+<p>En la primera entrega teníamos páginas construidas con HTML, CSS y JavaScript. En esta etapa migramos la aplicación a React, conservando la identidad visual y los productos, e incorporamos nuevas vistas, persistencia y pruebas.</p>
+<p>Organizamos el proyecto en componentes reutilizables, páginas, un contexto compartido y un servicio que administra los datos. Esta separación permite trabajar cada responsabilidad de forma independiente.</p>
+<p><em>Mostrar el catálogo y abrir un producto.</em></p>
+<p>Por ejemplo, cada producto utiliza el componente <code>ProductCard</code>. Este recibe mediante props los datos del producto y una función para agregarlo al carrito.</p>
+<p>Así podemos utilizar la misma tarjeta en el catálogo, los resultados de búsqueda y las ofertas. Cuando cambian los datos recibidos, React actualiza lo que se muestra.</p>
+<p><em>Buscar “Twin Peaks”, cambiar una categoría y entrar a Ofertas.</em></p>
+<p>La búsqueda y el filtro de categoría se pueden combinar. Estos criterios quedan representados en la dirección de navegación, lo que permite conservarlos al compartir o volver a una vista.</p>
+<p>También implementamos renderizado condicional: mostramos un mensaje cuando no hay coincidencias, una etiqueta cuando existe descuento y deshabilitamos la compra cuando un producto está agotado.</p>
+<p><em>Mostrar brevemente <code>src/components/ProductCard.jsx</code>.</em></p>
+<p>Aquí se pueden identificar las props del componente y el evento del botón. El componente muestra la información y comunica la acción; las reglas del carrito se resuelven en el servicio de datos.</p>
+<p><em>Activar la vista móvil del navegador.</em></p>
+<p>Para el diseño responsivo utilizamos Bootstrap, complementado con nuestros estilos. En escritorio se muestran varias tarjetas por fila; en pantallas pequeñas se reorganizan y la navegación se convierte en un menú desplegable.</p>
+<p>Además del catálogo incorporamos categorías, ofertas, detalle de producto, nosotros, blog y contacto. La tienda se puede explorar sin iniciar sesión.</p>
+<p><strong>Cierre de Fernando:</strong></p>
+<p>Ahora Enzo mostrará cómo conectamos estas vistas con los datos y cómo funciona el proceso de compra y administración.</p>
+<h2>2. Enzo — Persistencia, compra y administración</h2>
+<p><strong>Tiempo: 5:00–10:00</strong></p>
+<p><em>Deja preparado un carrito con un producto.</em></p>
+<p>La aplicación utiliza una base de datos simulada en JavaScript, según el alcance de esta entrega. Los productos, usuarios, categorías, pedidos y carrito se guardan en Local Storage.</p>
+<p>La sesión se mantiene en Session Storage, por lo que corresponde a la pestaña del navegador. Estos datos son locales y no se sincronizan entre equipos.</p>
+<p>Las operaciones están centralizadas en <code>src/services/store.js</code>. Ahí implementamos las validaciones y las funciones para crear, consultar, actualizar y eliminar registros.</p>
+<p><em>Cambiar la cantidad de un producto en el carrito.</em></p>
+<p>El carrito calcula los subtotales y valida las cantidades. No permite superar el stock disponible ni el límite de veinte unidades por producto.</p>
+<p>Después de una operación, el servicio guarda los cambios y notifica a React. El contexto compartido permite que distintas vistas, como el carrito y su contador, reflejen el mismo estado.</p>
+<p><em>Entrar al checkout y completar datos ficticios.</em></p>
+<p>En el checkout solicitamos los datos de contacto y el método de entrega. El usuario puede elegir despacho o retiro, y el resumen actualiza el costo correspondiente.</p>
+<p>Cuando una persona inicia sesión y tiene su dirección guardada en el perfil, esos datos se completan automáticamente.</p>
+<p><em>Seleccionar pago rechazado y confirmar.</em></p>
+<p>El pago es una simulación y no realiza cobros. Incluimos una opción de rechazo para demostrar el manejo de errores.</p>
+<p>En este caso no se genera ningún pedido, no se descuenta stock y los productos permanecen en el carrito.</p>
+<p><em>Reintentar con pago aprobado.</em></p>
+<p>Cuando la simulación se aprueba, se crea el pedido, se descuenta el stock y se vacía el carrito.</p>
+<p>El comprobante conserva el nombre, precio y cantidad de los productos comprados. De esa manera, una modificación posterior del catálogo no cambia los datos históricos del pedido.</p>
+<p><em>Ingresar como administrador y mostrar Productos, Categorías y Usuarios.</em></p>
+<p>El panel administrativo permite gestionar productos, categorías y usuarios. También contiene pedidos, comprobantes y reportes.</p>
+<p>Podemos modificar precios, existencias y descuentos. Existen validaciones para evitar datos incorrectos, correos duplicados y acciones como eliminar nuestra propia cuenta activa.</p>
+<p><em>Mostrar Reportes.</em></p>
+<p>Los reportes resumen las ventas simuladas y permiten identificar productos con stock crítico, definido como cinco unidades o menos.</p>
+<p>El control por roles sirve para esta demostración frontend. En una aplicación real, la autenticación y autorización también deberían validarse en un servidor.</p>
+<p><strong>Cierre de Enzo:</strong></p>
+<p>Marcelo explicará cómo verificamos estos comportamientos y qué resultados obtuvimos con las pruebas.</p>
+<h2>3. Marcelo — Pruebas, resultados y cierre</h2>
+<p><strong>Tiempo: 10:00–15:00</strong></p>
+<p><em>Deja abierto el editor y una terminal en el proyecto.</em></p>
+<p>Para verificar el funcionamiento configuramos Jasmine y Karma. Jasmine permite definir los casos y sus expectativas; Karma ejecuta esas pruebas en un navegador real.</p>
+<p>La suite final contiene cincuenta y seis pruebas aprobadas. Incluye componentes React, formularios, navegación, administración y reglas del servicio de datos.</p>
+<p><em>Abrir <code>tests/components.spec.jsx</code> y mostrar un caso sencillo.</em></p>
+<p>En los componentes comprobamos cuatro aspectos principales: renderizado, propiedades, estado y eventos.</p>
+<p>Por ejemplo, verificamos que una tarjeta muestre los datos recibidos, que un clic invoque la función correspondiente y que un producto sin stock tenga su botón deshabilitado.</p>
+<p>También probamos mensajes condicionales, filtros y formularios con entradas válidas e inválidas.</p>
+<p><em>Mostrar un espía de Jasmine y un caso de <code>tests/store.spec.js</code>.</em></p>
+<p>Utilizamos espías y respuestas simuladas para aislar comportamientos. Así podemos comprobar cómo responde una interfaz cuando el servicio devuelve un error.</p>
+<p>Por separado probamos el servicio real con almacenamiento en memoria. Un caso importante verifica que un pago rechazado conserve el carrito, el stock y los pedidos sin modificaciones.</p>
+<p><em>Ejecutar <code>npm test</code> y mostrar el resultado.</em></p>
+<p>Nuestro proceso consiste en definir el comportamiento esperado, preparar los datos, ejecutar una acción y comprobar el resultado. Si aparece un defecto, lo corregimos y repetimos las pruebas.</p>
+<p>La ejecución final aprobó los cincuenta y seis casos. La cobertura medida fue de un setenta coma seis por ciento de líneas, considerando todos los módulos JavaScript y JSX de la aplicación, salvo el archivo que monta la raíz de React.</p>
+<p>Esto no significa que la aplicación esté libre de errores. El informe identifica las áreas que tienen menor cobertura y las limitaciones de las pruebas.</p>
+<p><em>Mostrar el informe de testing y una captura móvil.</em></p>
+<p>Complementamos las pruebas con cuarenta y ocho comprobaciones en navegador sobre los recorridos de compra, perfiles, administración y diseño responsivo.</p>
+<p>Revisamos tamaños de móvil, tableta y escritorio. Estas comprobaciones son independientes y no aumentan el porcentaje de cobertura unitaria.</p>
+<p><em>Mostrar el ERS.</em></p>
+<p>Finalmente, actualizamos el ERS con los requisitos y criterios de aceptación, y documentamos el alcance del testing.</p>
+<p>Utilizamos inteligencia artificial como apoyo, conforme a la autorización de la actividad. Revisamos el código y comprobamos sus resultados; por eso podemos explicar tanto su funcionamiento como sus límites.</p>
+<p>Con esta entrega, Vesper incorpora una estructura en React, navegación, persistencia local, compra simulada, administración y pruebas automatizadas. Muchas gracias.</p>
+<h2>Preparación antes de presentar</h2>
+<p>Ensayen las transiciones y dejen preparadas las pestañas, las cuentas de demostración y los archivos. Los tres deben poder explicar por qué usan props, cómo se actualiza el estado y qué ocurre cuando falla un pago.</p>
+<table>
+<thead>
+<tr>
+<th>Integrante</th>
+<th>Preparar antes de su bloque</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fernando</td>
+<td>Inicio, catálogo, detalle de producto, <code>ProductCard.jsx</code> y vista móvil.</td>
+</tr>
+<tr>
+<td>Enzo</td>
+<td>Carrito con un producto, datos ficticios para checkout y cuenta de administrador.</td>
+</tr>
+<tr>
+<td>Marcelo</td>
+<td>Terminal en el proyecto, pruebas de componentes y servicio, informe de testing y ERS.</td>
+</tr>
+</tbody></table>
+<p><strong>Cuenta de administrador:</strong> <code>admin@vesper.cl</code> / <code>admin123</code><br><strong>Cuenta de cliente:</strong> <code>usuario@vesper.cl</code> / <code>user123</code></p>
+<p>Los resultados citados corresponden a la versión verificada de esta entrega. Si modifican el código, vuelvan a ejecutar las pruebas antes de presentar.</p>
+</body></html>

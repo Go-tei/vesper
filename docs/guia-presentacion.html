@@ -1,0 +1,175 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>VESPER · guia-presentacion</title><style>@page {size:A4;margin:18mm 15mm}body{font:10pt/1.5 Arial,sans-serif;color:#202020}h1{font-size:23pt;border-bottom:3px solid #a4141d;padding-bottom:12px}h2{font-size:15pt;margin-top:24px;break-after:avoid}h3{font-size:12pt;break-after:avoid}table{border-collapse:collapse;width:100%;font-size:8pt;margin:12px 0}th,td{border:1px solid #ccc;text-align:left;padding:6px;vertical-align:top;overflow-wrap:anywhere}th{background:#efede9}tr{break-inside:avoid}pre{white-space:pre-wrap;background:#efede9;padding:12px;font-size:8pt;overflow-wrap:anywhere}code{font-size:.9em;overflow-wrap:anywhere}a{color:#8a1520}p,li{orphans:3;widows:3}</style></head><body><h1>VESPER — Guía de presentación y defensa individual</h1>
+<p>La presentación del equipo dura <strong>15 minutos</strong>, seguida por <strong>5 minutos de preguntas</strong>. La pauta asigna el 40% de esta evaluación al encargo y el 60% a la presentación; cada integrante debe poder explicar el código y las pruebas. Completar los nombres de los integrantes y repartir los bloques antes de ensayar.</p>
+<p>Esta guía es un recorrido de demostración. Los resultados de las pruebas y del build se deben obtener de la ejecución real del proyecto, sin anunciar porcentajes o cantidades que no se hayan comprobado.</p>
+<h2>Preparación</h2>
+<ul>
+<li>Instalar con <code>npm ci</code>, ejecutar con <code>npm run dev</code> y abrir la dirección que muestra Vite. Para la suite usar <code>npm test</code>; para comprobar la compilación, <code>npm run build</code>. Dejar a mano el editor, la terminal y el informe de testing. Jasmine/Karma requiere Chrome o Chromium; <code>CHROME_BIN</code> permite indicar su ejecutable.</li>
+<li>Las rutas utilizan hash: abrir, por ejemplo, <code>/#/productos</code> o <code>/#/admin</code>. <code>src/main.jsx</code> monta <code>HashRouter</code> y <code>src/App.jsx</code> declara las vistas.</li>
+<li>Utilizar datos ficticios. La persistencia y los pagos son simulados; no ingresar contraseñas o información personal real.</li>
+<li>Revisar que el catálogo tenga stock y que haya un producto con descuento. Tener preparado un carrito de una o dos unidades.</li>
+<li>Tener disponibles las cuentas <code>admin@vesper.cl</code> / <code>admin123</code> y <code>usuario@vesper.cl</code> / <code>user123</code>.</li>
+<li>Guardar un resultado reciente de las pruebas como respaldo y ejecutar la suite durante la demostración si el tiempo lo permite.</li>
+<li>Comprobar escritorio, tableta y móvil. Para el ensayo pueden usarse, por ejemplo, anchos de 1440, 768 y 390 píxeles; registrar solamente los tamaños que efectivamente se revisen.</li>
+</ul>
+<h2>Guion de 15 minutos</h2>
+<table>
+<thead>
+<tr>
+<th>Tiempo</th>
+<th>Demostración</th>
+<th>Explicación técnica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:00–1:00</td>
+<td>Presentar VESPER, público objetivo y cambio desde la primera entrega.</td>
+<td>La versión previa usaba páginas HTML y manipulación directa del DOM. Esta entrega organiza la interfaz en React y separa vistas de reglas y persistencia.</td>
+</tr>
+<tr>
+<td>1:00–3:00</td>
+<td>Recorrer catálogo público, búsqueda, categoría, ofertas y detalle.</td>
+<td>Mostrar una lista que se genera a partir de datos y un componente reutilizable. Explicar qué recibe por props y qué acción comunica mediante un callback.</td>
+</tr>
+<tr>
+<td>3:00–4:30</td>
+<td>Cambiar el ancho de la pantalla, abrir el menú y revisar un formulario o tabla.</td>
+<td>Identificar en el código clases reales de Bootstrap: rejilla, columnas, utilidades y contenedores responsivos. Explicar el cambio visible, no solo nombrar Bootstrap.</td>
+</tr>
+<tr>
+<td>4:30–7:00</td>
+<td>Agregar al carrito, cambiar cantidad, ir al checkout, simular rechazo y reintentar con aprobación.</td>
+<td>El rechazo conserva carrito y stock. La aprobación valida, crea pedido, descuenta stock y vacía el carrito. Mostrar el resumen y explicar el cálculo de subtotal más entrega.</td>
+</tr>
+<tr>
+<td>7:00–9:00</td>
+<td>Iniciar sesión como administrador; crear o editar un producto y categoría; consultar pedidos y reportes.</td>
+<td>Los mantenedores usan operaciones CRUD del servicio. Las vistas administrativas y las operaciones comprueban el rol; son controles de una simulación local.</td>
+</tr>
+<tr>
+<td>9:00–10:30</td>
+<td>Mostrar el árbol de <code>src</code>, datos iniciales, servicio y contexto.</td>
+<td>Explicar <code>src/data/seed.js</code>, <code>src/services/store.js</code> y <code>src/context/ShopContext.jsx</code>; distinguir datos iniciales, persistencia, snapshot y renderizado.</td>
+</tr>
+<tr>
+<td>10:30–13:30</td>
+<td>Ejecutar las pruebas y abrir ejemplos del código de los casos.</td>
+<td>Presentar al menos 10 casos correctos, agrupados por renderizado, props, estado, eventos y reglas del servicio. Mostrar qué se prepara, qué acción se realiza y qué resultado se verifica.</td>
+</tr>
+<tr>
+<td>13:30–15:00</td>
+<td>Mostrar ERS V2, informe de testing y entregables.</td>
+<td>Relacionar un requisito con el comportamiento y su prueba. Explicar los límites: datos por navegador, pago simulado y backend pendiente.</td>
+</tr>
+</tbody></table>
+<p>Si el equipo tiene tres integrantes, una distribución posible es tienda y componentes; compra y persistencia; administración y pruebas. Todos deben estudiar los tres bloques para responder preguntas individuales.</p>
+<h2>Ejemplos de explicación con el código abierto</h2>
+<h3>1. Props y responsabilidad de un componente</h3>
+<p>Abrir <code>src/components/ProductCard.jsx</code> y su uso en <code>src/components/ProductList.jsx</code>. Identificar <code>product</code> y <code>onAdd</code> como props. La tarjeta invoca <code>onAdd(product.id)</code> y la página del catálogo conecta ese callback con <code>store.addToCart</code>. Explicar:</p>
+<blockquote>
+<p>“La tarjeta presenta un producto recibido por props. No necesita saber dónde se guarda el carrito. Cuando se pulsa el botón comunica una acción y la operación de compra se resuelve en el servicio. Así podemos reutilizar la tarjeta y probar qué muestra con datos conocidos.”</p>
+</blockquote>
+<p>Mostrar la línea de la lista que asigna una <code>key</code> basada en el identificador. La clave ayuda a React a reconocer cada elemento cuando cambia la lista; no debe confundirse con una prop de negocio.</p>
+<h3>2. Estado de un formulario o filtro</h3>
+<p>Abrir <code>CheckoutPage</code> en <code>src/pages/CartPages.jsx</code> o <code>ContactPage</code> en <code>src/pages/ContactPage.jsx</code>. Señalar <code>data</code> en <code>useState</code>, el atributo <code>value</code> de los campos y el controlador <code>onChange</code>. Escribir en la interfaz y relacionar la acción con esas líneas:</p>
+<blockquote>
+<p>“El valor se conserva en estado React. El evento actualiza ese estado y React vuelve a representar el resultado. En el envío, el formulario valida y llama al servicio; si hay un error, se muestra mediante un estado de mensaje.”</p>
+</blockquote>
+<p>Distinguir estado local de pantalla, como datos del formulario o mensajes, del estado compartido, como productos, sesión y carrito. En <code>CatalogPage.jsx</code>, la búsqueda y categoría se conservan en parámetros de URL mediante <code>useSearchParams</code>, lo que permite conservar y compartir el filtro; no se presentan como otro <code>useState</code>.</p>
+<h3>3. Persistencia y suscripción</h3>
+<p>Abrir <code>src/services/store.js</code> y <code>src/context/ShopContext.jsx</code>. Seguir una operación real, por ejemplo <code>addToCart</code> o <code>saveProduct</code>:</p>
+<ol>
+<li>La interfaz invoca la operación con los datos necesarios.</li>
+<li>El servicio comprueba reglas y permisos aplicables.</li>
+<li>Se actualiza el estado y se guarda en el almacenamiento del navegador.</li>
+<li>Se notifica a los suscriptores.</li>
+<li><code>useSyncExternalStore</code> recibe el snapshot actualizado y React actualiza las vistas que lo usan.</li>
+</ol>
+<p>Explicar por qué el snapshot debe conservar su referencia cuando no hubo cambios: React debe poder distinguir el mismo estado de una nueva actualización. Recargar muestra que el carrito o producto se recupera del almacenamiento; no demuestra sincronización con un servidor.</p>
+<h3>4. Proceso de compra</h3>
+<p>Mostrar el pedido creado y la operación <code>checkout</code>. Explicar que el pedido guarda una copia del nombre y precio de cada ítem para que una edición posterior del catálogo no cambie el resumen de una compra previa.</p>
+<p>Demostrar primero el rechazo. Antes y después, el carrito conserva sus líneas y no aparece un pedido nuevo. Después, elegir aprobación y verificar el resultado. Esto permite explicar una regla observable de negocio y una de sus pruebas, sin depender de una pasarela externa.</p>
+<h3>5. Responsive con Bootstrap</h3>
+<p>Abrir <code>ProductList.jsx</code> y señalar <code>row g-4</code> y <code>col-12 col-md-6 col-lg-4</code>: las tarjetas ocupan una columna en móvil, dos desde el tamaño medio y tres desde el grande. En <code>Layout.jsx</code>, <code>navbar-expand-xl</code> y el estado <code>open</code> controlan el menú adaptable. Revisar navegación, tabla administrativa y formulario además de las tarjetas: un sitio responsivo necesita que sus acciones sean utilizables.</p>
+<h2>Cómo explicar Jasmine y Karma</h2>
+<p><strong>Jasmine</strong> permite describir casos con <code>describe</code> e <code>it</code>, preparar datos y verificar resultados con <code>expect</code>; los spies registran si se llamó una función y con qué argumentos. <strong>Karma</strong> inicia el navegador y coordina la ejecución de la suite. React se monta en un DOM de prueba y se simulan acciones para observar sus resultados.</p>
+<p>Abrir <code>karma.conf.cjs</code>, <code>tests/components.spec.jsx</code>, <code>tests/admin.spec.jsx</code>, <code>tests/store.spec.js</code> y <code>tests/helpers.jsx</code>. La configuración procesa JSX con Babel/webpack, aplica instrumentación de cobertura y ejecuta Chromium headless. Elegir casos presentes en la suite final y explicarlos con esta secuencia:</p>
+<ol>
+<li><strong>Preparar:</strong> crear el componente con props conocidas, almacenamiento aislado o un estado inicial controlado.</li>
+<li><strong>Actuar:</strong> renderizar, escribir, hacer clic o invocar una operación.</li>
+<li><strong>Verificar:</strong> comprobar el texto, la aparición de un mensaje, una llamada o el cambio de estado esperado.</li>
+<li><strong>Limpiar:</strong> desmontar componentes y descartar datos para evitar que un caso contamine al siguiente.</li>
+</ol>
+<p>Conviene demostrar ejemplos de estas familias, siempre usando los casos efectivamente implementados:</p>
+<table>
+<thead>
+<tr>
+<th>Familia</th>
+<th>Ejemplo de comportamiento a localizar en la suite</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Renderizado</td>
+<td>Una tarjeta muestra nombre y precio del producto recibido.</td>
+</tr>
+<tr>
+<td>Listas</td>
+<td>Se muestran todos los elementos del conjunto de prueba o un estado vacío.</td>
+</tr>
+<tr>
+<td>Condiciones</td>
+<td>Se presenta un error solamente cuando corresponde o se desactiva una acción sin stock.</td>
+</tr>
+<tr>
+<td>Props y eventos</td>
+<td>Un clic invoca el callback esperado con los datos correctos.</td>
+</tr>
+<tr>
+<td>Estado</td>
+<td>Escribir o seleccionar una opción cambia el filtro o el formulario.</td>
+</tr>
+<tr>
+<td>Carrito</td>
+<td>La cantidad respeta límites y el total se recalcula.</td>
+</tr>
+<tr>
+<td>Validación</td>
+<td>Un dato inválido o un correo duplicado se rechaza con un mensaje.</td>
+</tr>
+<tr>
+<td>Pago</td>
+<td>El rechazo no altera carrito/pedidos/stock; la aprobación realiza los cambios esperados.</td>
+</tr>
+<tr>
+<td>Acceso</td>
+<td>Un usuario sin rol administrador no puede modificar el catálogo.</td>
+</tr>
+<tr>
+<td>Persistencia</td>
+<td>Una nueva instancia del servicio recupera los datos guardados en el almacenamiento de prueba.</td>
+</tr>
+</tbody></table>
+<p>En <code>tests/components.spec.jsx</code>, el caso “ejecuta una sola vez el callback al agregar el producto” utiliza <code>jasmine.createSpy</code> y <code>toHaveBeenCalledOnceWith(product.id)</code> para comprobar la interacción real del botón. El caso “actualiza el DOM cuando cambia el estado de un formulario controlado” escribe un nombre y comprueba el valor del campo y del <code>output</code>. En <code>tests/store.spec.js</code>, “conserva carrito, stock y pedidos al rechazar un pago” compara el estado antes y después de una operación fallida.</p>
+<p>Un mock o almacenamiento en memoria sustituye una dependencia para controlar las entradas y aislar cada caso. Un spy permite comprobar una interacción. Ninguno equivale a probar un sistema remoto real.</p>
+<p>Al leer los resultados, distinguir:</p>
+<ul>
+<li><strong>Casos aprobados:</strong> escenarios escritos que se ejecutaron sin fallar.</li>
+<li><strong>Cobertura funcional:</strong> requisitos y comportamientos comprobados por esos escenarios.</li>
+<li><strong>Cobertura de código:</strong> líneas, ramas, funciones o sentencias ejecutadas sobre los archivos instrumentados, solamente si existe un reporte medido.</li>
+</ul>
+<p><code>tests/index.js</code> importa también los módulos de aplicación que todavía no tienen escenarios, excepto <code>src/main.jsx</code>; así el reporte no oculta esas áreas al calcular cobertura. Abrir <code>coverage/index.html</code> tras ejecutar <code>npm test</code> y contrastar los archivos con menor cobertura con el alcance del informe. No afirmar “100% de calidad” ni “todos los errores están resueltos” porque una suite apruebe. Explicar las áreas pendientes o revisadas manualmente.</p>
+<h2>Preguntas posibles y puntos para responder</h2>
+<p><strong>¿Por qué React?</strong><br>Permite componer vistas reutilizables y representar la interfaz a partir de datos y estado. Aquí reduce la repetición de encabezados, tarjetas y formularios frente a las páginas independientes de la primera entrega.</p>
+<p><strong>¿Qué diferencia hay entre props y state?</strong><br>Las props llegan desde el componente que utiliza al hijo. El estado representa valores que cambian durante la interacción. Se deben señalar ejemplos reales del proyecto, no solo dar definiciones.</p>
+<p><strong>¿Por qué usar contexto?</strong><br>Productos, sesión y carrito se utilizan en varias rutas. El contexto y la suscripción evitan pasar esos datos manualmente por todos los niveles, mientras los filtros y formularios permanecen locales.</p>
+<p><strong>¿Qué significa CRUD en VESPER?</strong><br>Crear, leer, actualizar y eliminar datos. Mostrar las operaciones de un mantenedor y cómo se reflejan en el catálogo y en el almacenamiento.</p>
+<p><strong>¿Dónde están la base de datos y el backend?</strong><br>Esta entrega utiliza una fuente de datos JavaScript y persistencia local, como solicita la pauta. No hay servidor ni API proporcionados. El servicio concentra las operaciones para facilitar una futura integración, pero esa integración no se declara realizada.</p>
+<p><strong>¿La cuenta administradora es segura para producción?</strong><br>No. Las credenciales y controles son de demostración en el navegador. Una solución real necesita autenticación, autorización y validación en el servidor, junto con almacenamiento seguro de contraseñas.</p>
+<p><strong>¿Qué pasa al cambiar de navegador?</strong><br>Los datos locales no se comparten. Cada navegador y origen tiene su propia persistencia; limpiar los datos del sitio los elimina.</p>
+<p><strong>¿Por qué comprobar el stock en el servicio?</strong><br>La validación visual puede omitirse o quedar desactualizada. Centralizar la regla permite aplicarla tanto al modificar el carrito como al confirmar la compra y probarla sin depender de una página específica.</p>
+<p><strong>¿Por qué el pedido conserva precios?</strong><br>Para que un cambio posterior del catálogo no modifique el resumen histórico. El carrito utiliza precios vigentes; el pedido registra los de la compra aprobada.</p>
+<p><strong>¿Qué comprueba exactamente esta prueba?</strong><br>Mostrar los datos iniciales, la acción y la aserción. Explicar qué defecto detectaría y qué queda fuera de su alcance.</p>
+<p><strong>¿Cuál es la diferencia entre prueba unitaria y revisión manual?</strong><br>La prueba automatizada repite un escenario y verifica un resultado definido. La revisión manual permite explorar navegación, contenido y diseño. Las dos aportan evidencia distinta y se documentan por separado.</p>
+<p><strong>¿Cómo se usó IA?</strong><br>Según la autorización del curso, se utilizó como apoyo al desarrollo. La defensa consiste en explicar, ejecutar y verificar la solución entregada. Cada integrante debe poder localizar las reglas, reproducir un flujo y explicar sus límites.</p>
+<h2>Ensayo individual</h2>
+<p>Cada integrante debe practicar, sin leer el guion, estas cuatro tareas: explicar un componente con props y estado; seguir una operación desde la interfaz hasta la persistencia; demostrar una prueba y su aserción; y reconocer una limitación de la simulación con la siguiente mejora técnica necesaria.</p>
+</body></html>

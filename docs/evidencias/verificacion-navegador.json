@@ -1,0 +1,357 @@
+{
+  "checks": [
+    {
+      "label": "Catálogo público inicial",
+      "okay": true
+    },
+    {
+      "label": "Responsive inicio 1440",
+      "okay": true,
+      "detail": {
+        "width": 1440,
+        "scroll": 1440
+      }
+    },
+    {
+      "label": "Filtro de texto",
+      "okay": true
+    },
+    {
+      "label": "Detalle de producto",
+      "okay": true
+    },
+    {
+      "label": "Carrito invitado",
+      "okay": true
+    },
+    {
+      "label": "Cantidad y persistencia carrito",
+      "okay": true,
+      "detail": [
+        {
+          "productId": 2,
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "label": "Responsive carrito 1440",
+      "okay": true,
+      "detail": {
+        "width": 1440,
+        "scroll": 1440
+      }
+    },
+    {
+      "label": "Responsive carrito con productos 390",
+      "okay": true,
+      "detail": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "label": "Responsive carrito con productos 768",
+      "okay": true,
+      "detail": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "label": "Checkout valida campos vacíos",
+      "okay": true
+    },
+    {
+      "label": "Responsive checkout 1440",
+      "okay": true,
+      "detail": {
+        "width": 1440,
+        "scroll": 1440
+      }
+    },
+    {
+      "label": "Responsive checkout 390",
+      "okay": true,
+      "detail": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "label": "Responsive checkout 768",
+      "okay": true,
+      "detail": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "label": "Pago rechazado conserva carrito/stock/pedidos",
+      "okay": true
+    },
+    {
+      "label": "Compra invitado exitosa",
+      "okay": true
+    },
+    {
+      "label": "Comprobante visible",
+      "okay": true
+    },
+    {
+      "label": "Perfil actualizado",
+      "okay": true
+    },
+    {
+      "label": "Autocompletado checkout",
+      "okay": true
+    },
+    {
+      "label": "Historial cliente",
+      "okay": true
+    },
+    {
+      "label": "Cliente no puede entrar administración",
+      "okay": true
+    },
+    {
+      "label": "Admin dashboard",
+      "okay": true
+    },
+    {
+      "label": "Responsive admin 1440",
+      "okay": true,
+      "detail": {
+        "width": 1440,
+        "scroll": 1440
+      }
+    },
+    {
+      "label": "Admin crea categoría",
+      "okay": true
+    },
+    {
+      "label": "Admin crea producto",
+      "okay": true
+    },
+    {
+      "label": "Reporte stock crítico",
+      "okay": true
+    },
+    {
+      "label": "Admin crea usuario",
+      "okay": true
+    },
+    {
+      "label": "Admin elimina usuario",
+      "okay": true
+    },
+    {
+      "label": "Pedidos en administración",
+      "okay": true
+    },
+    {
+      "label": "Detalle comprobante admin",
+      "okay": true
+    },
+    {
+      "label": "Admin elimina producto",
+      "okay": true
+    },
+    {
+      "label": "Admin edita categoría",
+      "okay": true
+    },
+    {
+      "label": "Admin elimina categoría",
+      "okay": true
+    },
+    {
+      "label": "Responsive / 390",
+      "okay": true,
+      "detail": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "label": "Responsive /carrito 390",
+      "okay": true,
+      "detail": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "label": "Responsive /admin 390",
+      "okay": true,
+      "detail": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "label": "Responsive /admin/productos 390",
+      "okay": true,
+      "detail": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "label": "Menú móvil abre",
+      "okay": true
+    },
+    {
+      "label": "Responsive / 768",
+      "okay": true,
+      "detail": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "label": "Responsive /carrito 768",
+      "okay": true,
+      "detail": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "label": "Responsive /admin 768",
+      "okay": true,
+      "detail": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "label": "Responsive /admin/productos 768",
+      "okay": true,
+      "detail": {
+        "width": 768,
+        "scroll": 768
+      }
+    },
+    {
+      "label": "Vista ofertas",
+      "okay": true
+    },
+    {
+      "label": "Vista categorías",
+      "okay": true
+    },
+    {
+      "label": "Blog",
+      "okay": true
+    },
+    {
+      "label": "Registro valida confirmación",
+      "okay": true
+    },
+    {
+      "label": "Registro nuevo usuario",
+      "okay": true
+    },
+    {
+      "label": "Contacto valida consulta",
+      "okay": true
+    },
+    {
+      "label": "Contacto guarda consulta",
+      "okay": true
+    }
+  ],
+  "errors": [],
+  "overflow": [
+    {
+      "label": "inicio 1440",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "label": "carrito 1440",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "label": "carrito con productos 390",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "label": "carrito con productos 768",
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "label": "checkout 1440",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "label": "checkout 390",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "label": "checkout 768",
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "label": "admin 1440",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "label": "/ 390",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "label": "/carrito 390",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "label": "/admin 390",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "label": "/admin/productos 390",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "label": "/ 768",
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "label": "/carrito 768",
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "label": "/admin 768",
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "label": "/admin/productos 768",
+      "width": 768,
+      "scroll": 768
+    }
+  ],
+  "console": [],
+  "screenshots": [
+    "/workspace/vesper/docs/evidencias/inicio-escritorio.png",
+    "/workspace/vesper/docs/evidencias/checkout-escritorio.png",
+    "/workspace/vesper/docs/evidencias/administracion-escritorio.png",
+    "/workspace/vesper/docs/evidencias/inicio-movil.png"
+  ],
+  "finished": "2026-11-05T13:55:34.392Z"
+}
