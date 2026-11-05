@@ -1,0 +1,329 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>VESPER · ERS-v2</title><style>@page {size:A4;margin:18mm 15mm}body{font:10pt/1.5 Arial,sans-serif;color:#202020}h1{font-size:23pt;border-bottom:3px solid #a4141d;padding-bottom:12px}h2{font-size:15pt;margin-top:24px;break-after:avoid}h3{font-size:12pt;break-after:avoid}table{border-collapse:collapse;width:100%;font-size:8pt;margin:12px 0}th,td{border:1px solid #ccc;text-align:left;padding:6px;vertical-align:top;overflow-wrap:anywhere}th{background:#efede9}tr{break-inside:avoid}pre{white-space:pre-wrap;background:#efede9;padding:12px;font-size:8pt;overflow-wrap:anywhere}code{font-size:.9em;overflow-wrap:anywhere}a{color:#8a1520}p,li{orphans:3;widows:3}</style></head><body><h1>VESPER — Especificación de requisitos de software, versión 2</h1>
+<p><strong>Asignatura:</strong> DSY1104, Desarrollo Fullstack II<br><strong>Entrega:</strong> Evaluación Parcial 2, frontend y pruebas unitarias<br><strong>Repositorio:</strong> <a href="https://github.com/Go-tei/vesper">https://github.com/Go-tei/vesper</a><br><strong>Integrantes:</strong> completar con los nombres del equipo y su sección.<br><strong>Fecha de presentación:</strong> completar según el calendario del curso.</p>
+<h2>1. Propósito y fuentes</h2>
+<p>VESPER es una tienda académica de streetwear inspirada en series, cine, música, anime y videojuegos. Esta versión transforma el sitio de la primera entrega, basado en HTML y JavaScript, en una aplicación React. Conserva la identidad visual y el catálogo existente, y amplía la navegación, la administración y el proceso de compra.</p>
+<p>Esta especificación traduce los requisitos de los documentos proporcionados: <strong>“Evaluación Parcial N.º 2: Implementando frontend y pruebas unitarias a mi tienda online”</strong> y <strong>“Instrucciones para el desarrollo de la Evaluación 2”</strong>. La pauta solicita React, Bootstrap, persistencia simulada en JavaScript, pruebas con Jasmine y Karma, ERS actualizado, informe de testing, repositorio público y proyecto comprimido.</p>
+<p>El documento define comportamiento y criterios de aceptación. Los resultados efectivos de ejecución y el alcance medido de las pruebas deben consultarse en el informe de testing de esta entrega; una lista de requisitos no constituye evidencia de ejecución.</p>
+<h2>2. Alcance y supuestos</h2>
+<p>El alcance es una aplicación frontend ejecutada en el navegador. Utiliza un archivo JavaScript de datos iniciales y un servicio de persistencia local. Permite explorar productos sin iniciar sesión, gestionar un carrito, simular una compra y administrar los datos de la tienda mediante una cuenta de demostración.</p>
+<p>Para esta entrega se adoptan estos supuestos:</p>
+<ul>
+<li>Se dispone del repositorio de VESPER de la primera entrega y de los dos PDF. No se proporcionó un backend, una API ni el template administrativo HTML adicional mencionado en las instrucciones.</li>
+<li>El archivo JavaScript de datos simulados solicitado por la pauta se implementa con persistencia en <code>localStorage</code>; <code>sessionStorage</code> conserva la sesión de la pestaña. Estos datos pertenecen al navegador y al origen de la aplicación.</li>
+<li>El pago se simula de forma explícita y permite demostrar tanto aprobación como rechazo. No se solicitan tarjetas ni se procesan pagos reales.</li>
+<li>El despacho tiene una tarifa de demostración de $3.990 CLP; el retiro tiene costo cero. Los precios se expresan en pesos chilenos.</li>
+<li>Los reportes se calculan con los pedidos registrados localmente. No representan ventas de un sistema externo.</li>
+<li>La autenticación y la restricción visual de rutas son educativas. Las cuentas y contraseñas de demostración se almacenan en el cliente; esta solución no proporciona seguridad de producción.</li>
+</ul>
+<p>La mención a una presentación con backend y frontend se cubre aquí explicando la separación entre interfaz y servicio simulado. Una API real, autenticación de servidor, base de datos remota y pasarela de pago requieren una etapa adicional y no se declaran implementadas.</p>
+<h2>3. Actores</h2>
+<table>
+<thead>
+<tr>
+<th>Actor</th>
+<th>Facultades</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Visitante</td>
+<td>Consulta la tienda pública, busca productos, utiliza el carrito, realiza un checkout simulado, envía una consulta local y puede registrarse.</td>
+</tr>
+<tr>
+<td>Cliente registrado</td>
+<td>Accede a las funciones públicas, inicia/cierra sesión, mantiene su perfil y utiliza sus datos para completar el checkout.</td>
+</tr>
+<tr>
+<td>Administrador</td>
+<td>Accede al panel, mantiene productos, categorías y usuarios, consulta pedidos, resúmenes, stock crítico y su perfil.</td>
+</tr>
+</tbody></table>
+<h2>4. Requisitos funcionales y aceptación</h2>
+<p>Los identificadores permiten relacionar funcionalidad, código, demostración y casos del informe de testing.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requisito</th>
+<th>Criterio de aceptación</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RF-01</td>
+<td>Catálogo público en React</td>
+<td>Un visitante puede abrir la tienda y ver los productos con imagen, nombre, categoría y precio sin iniciar sesión. Las listas se generan a partir de datos, mediante componentes reutilizables.</td>
+</tr>
+<tr>
+<td>RF-02</td>
+<td>Búsqueda y filtros</td>
+<td>Escribir una consulta o elegir una categoría actualiza los productos visibles. Si no hay coincidencias se presenta un estado vacío comprensible.</td>
+</tr>
+<tr>
+<td>RF-03</td>
+<td>Detalle de producto</td>
+<td>Desde un producto se accede a su información individual, disponibilidad y acción de compra; un identificador inexistente muestra una salida de recuperación.</td>
+</tr>
+<tr>
+<td>RF-04</td>
+<td>Categorías y ofertas</td>
+<td>Hay una vista de categorías con acceso a sus productos y una vista de ofertas que presenta productos con descuento y su precio correspondiente.</td>
+</tr>
+<tr>
+<td>RF-05</td>
+<td>Contenido y navegación</td>
+<td>La aplicación ofrece inicio, catálogo, nosotros, blog y detalle de artículo, contacto, acceso y registro; los enlaces internos cambian de vista sin recargar el documento.</td>
+</tr>
+<tr>
+<td>RF-06</td>
+<td>Registro y acceso</td>
+<td>Se valida nombre, correo y contraseña. No se admite un correo duplicado. Credenciales incorrectas muestran un error; las correctas crean una sesión sin exponer la contraseña en la navegación.</td>
+</tr>
+<tr>
+<td>RF-07</td>
+<td>Perfil y cierre de sesión</td>
+<td>Una cuenta conectada puede actualizar los datos permitidos de su perfil. Cerrar sesión actualiza el menú y restringe el acceso administrativo.</td>
+</tr>
+<tr>
+<td>RF-08</td>
+<td>Carrito persistente</td>
+<td>Agregar productos, modificar cantidades o quitar líneas actualiza subtotales, total y contador. Las cantidades deben ser enteras y respetar el stock y el límite de 20 unidades por producto. Recargar conserva el carrito local válido.</td>
+</tr>
+<tr>
+<td>RF-09</td>
+<td>Checkout validado</td>
+<td>El checkout presenta el resumen e identifica al cliente. Para despacho solicita datos de dirección y permite seleccionar la entrega. Un carrito vacío no puede generar un pedido.</td>
+</tr>
+<tr>
+<td>RF-10</td>
+<td>Autocompletado</td>
+<td>Si hay una sesión con datos personales y dirección, el checkout se inicia con esos valores, que pueden revisarse antes de confirmar.</td>
+</tr>
+<tr>
+<td>RF-11</td>
+<td>Compra aprobada</td>
+<td>Una aprobación simulada crea un pedido con fecha, cliente, detalle y totales; descuenta stock y vacía el carrito. La vista de éxito permite revisar el resumen.</td>
+</tr>
+<tr>
+<td>RF-12</td>
+<td>Compra rechazada</td>
+<td>Un rechazo simulado lleva a la vista de error y permite reintentar. No crea un pedido, no descuenta stock y conserva el carrito.</td>
+</tr>
+<tr>
+<td>RF-13</td>
+<td>Administración de productos</td>
+<td>Un administrador puede listar, crear, editar y eliminar productos. Se validan los campos requeridos, la categoría, el precio positivo, stock entero no negativo y descuento permitido. Los cambios se reflejan en la tienda y persisten al recargar.</td>
+</tr>
+<tr>
+<td>RF-14</td>
+<td>Administración de categorías</td>
+<td>Un administrador puede crear, consultar, editar y eliminar categorías respetando las relaciones con productos y evitando nombres inválidos o duplicados.</td>
+</tr>
+<tr>
+<td>RF-15</td>
+<td>Administración de usuarios</td>
+<td>Un administrador puede consultar y mantener cuentas y roles. Se rechazan correos duplicados y acciones que dejen al sistema sin administrador o eliminen/degraden la cuenta administrativa activa.</td>
+</tr>
+<tr>
+<td>RF-16</td>
+<td>Pedidos y resúmenes</td>
+<td>El panel lista los pedidos aprobados y permite consultar un detalle tipo boleta, conservando el nombre y precio de cada producto al momento de la compra. No se presenta como documento tributario.</td>
+</tr>
+<tr>
+<td>RF-17</td>
+<td>Historial y reportes</td>
+<td>Se puede consultar el historial de compras de una cuenta y reportes derivados de los pedidos. Se identifican productos con stock crítico, definido como cinco unidades o menos.</td>
+</tr>
+<tr>
+<td>RF-18</td>
+<td>Acceso administrativo</td>
+<td>Sin sesión se solicita iniciar sesión para acceder al panel; un cliente sin rol administrador no accede a las funciones administrativas de la interfaz ni a sus operaciones del servicio.</td>
+</tr>
+<tr>
+<td>RF-19</td>
+<td>Contacto</td>
+<td>El formulario valida datos y registra una consulta local. El resultado informa su carácter local; no afirma haber enviado un correo.</td>
+</tr>
+<tr>
+<td>RF-20</td>
+<td>Persistencia e integridad</td>
+<td>Los datos iniciales se cargan cuando faltan y se conservan las modificaciones válidas anteriores. El JSON local ilegible se recupera mediante datos de respaldo; también se normalizan productos, usuarios y líneas de carrito al iniciar. El estado publicado por el servicio actualiza los componentes suscritos.</td>
+</tr>
+</tbody></table>
+<h2>5. Mapa de navegación</h2>
+<p>Las rutas se declaran en <code>src/App.jsx</code>. El punto de entrada <code>src/main.jsx</code> utiliza <code>HashRouter</code>: las direcciones se escriben después de <code>/#</code>, por ejemplo <code>/#/productos</code>. Así la navegación funciona en alojamiento estático sin exigir que el servidor resuelva cada ruta de React.</p>
+<table>
+<thead>
+<tr>
+<th>Grupo</th>
+<th>Rutas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tienda</td>
+<td><code>/</code>, <code>/productos</code>, <code>/productos/:id</code>, <code>/categorias</code>, <code>/categorias/:nombre</code>, <code>/ofertas</code></td>
+</tr>
+<tr>
+<td>Contenido</td>
+<td><code>/nosotros</code>, <code>/blog</code>, <code>/blog/:slug</code>, <code>/contacto</code></td>
+</tr>
+<tr>
+<td>Cuenta</td>
+<td><code>/login</code>, <code>/registro</code>, <code>/perfil</code></td>
+</tr>
+<tr>
+<td>Compra</td>
+<td><code>/carrito</code>, <code>/checkout</code>, <code>/compra/:id</code>, <code>/pago-error</code></td>
+</tr>
+<tr>
+<td>Panel</td>
+<td><code>/admin</code>, <code>/admin/productos</code>, <code>/admin/productos/nuevo</code>, <code>/admin/productos/:id</code></td>
+</tr>
+<tr>
+<td>Mantenedores</td>
+<td><code>/admin/categorias</code>, <code>/admin/usuarios</code>, <code>/admin/usuarios/nuevo</code>, <code>/admin/usuarios/:id</code></td>
+</tr>
+<tr>
+<td>Operación</td>
+<td><code>/admin/ordenes</code>, <code>/admin/ordenes/:id</code>, <code>/admin/reportes</code>, <code>/admin/perfil</code></td>
+</tr>
+</tbody></table>
+<p>Flujo de compra: catálogo o categoría → detalle o carrito → checkout → compra aprobada o pago rechazado → resumen o reintento.</p>
+<p>Flujo administrativo: acceso con cuenta administradora → panel → mantenedores, órdenes o reportes → consulta o formulario → actualización de datos locales y de la interfaz.</p>
+<h2>6. Requisitos no funcionales</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requisito</th>
+<th>Criterio verificable</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RNF-01</td>
+<td>Tecnología y estructura</td>
+<td>React gestiona las vistas; Vite procesa JSX y genera el build; Bootstrap aporta estilos y rejilla. Datos, servicio, contexto, componentes y páginas tienen responsabilidades separadas.</td>
+</tr>
+<tr>
+<td>RNF-02</td>
+<td>Diseño responsivo</td>
+<td>En móvil, tableta y escritorio, los elementos se reorganizan mediante la rejilla y utilidades de Bootstrap. Los formularios mantienen etiquetas legibles, el menú es utilizable y las tablas pueden desplazarse dentro de su contenedor.</td>
+</tr>
+<tr>
+<td>RNF-03</td>
+<td>Accesibilidad básica</td>
+<td>Los campos tienen etiquetas, las imágenes de productos tienen texto alternativo, los controles usan elementos semánticos y los estados relevantes se anuncian con mensajes comprensibles.</td>
+</tr>
+<tr>
+<td>RNF-04</td>
+<td>Mantenibilidad</td>
+<td>Los componentes reciben datos y callbacks por props; el estado de formularios y filtros permanece cerca de su uso. El servicio centraliza validación y persistencia para evitar reglas duplicadas en las páginas.</td>
+</tr>
+<tr>
+<td>RNF-05</td>
+<td>Pruebas ejecutables</td>
+<td>Jasmine define los casos y aserciones; Karma los ejecuta en un navegador. La suite cubre renderizado, props, estado, eventos, condiciones y reglas relevantes del servicio. La pauta exige demostrar al menos 10 pruebas correctas.</td>
+</tr>
+<tr>
+<td>RNF-06</td>
+<td>Reproducibilidad</td>
+<td>El repositorio incluye dependencias y scripts, instrucciones de instalación y ejecución, documentos y archivo comprimido de código fuente. Se registran los comandos y resultados reales de verificación.</td>
+</tr>
+<tr>
+<td>RNF-07</td>
+<td>Transparencia de la simulación</td>
+<td>La interfaz y los documentos distinguen datos locales, consultas locales y pagos simulados de un servicio remoto.</td>
+</tr>
+</tbody></table>
+<h2>7. Diseño de la solución</h2>
+<p>La migración reemplaza páginas HTML independientes por una aplicación de componentes. La interfaz conserva el lenguaje visual de VESPER y reutiliza sus imágenes. React Router representa cada vista mediante una ruta; el panel agrupa sus rutas de administración.</p>
+<p>La organización separa estas responsabilidades:</p>
+<ul>
+<li><code>src/data/seed.js</code>: datos JavaScript iniciales de productos, usuarios y categorías.</li>
+<li><code>src/services/store.js</code>: CRUD, validaciones, sesión, carrito, checkout y persistencia. Expone un snapshot y una suscripción a cambios.</li>
+<li><code>src/context/ShopContext.jsx</code>: publica el estado compartido a través de React. <code>useSyncExternalStore</code> conecta los componentes con el snapshot estable del servicio; al recibir una notificación React vuelve a leerlo.</li>
+<li><code>src/components/ProductCard.jsx</code> y <code>ProductList.jsx</code>: reciben <code>product</code> o <code>products</code> y el callback <code>onAdd</code>; presentan tarjetas y listas con estados de oferta, disponibilidad y lista vacía.</li>
+<li><code>src/components/Field.jsx</code> y <code>Feedback.jsx</code>: reutilizan etiquetas, campos controlados y mensajes condicionales. <code>Layout.jsx</code> comparte navegación, pie y título de página.</li>
+<li><code>src/pages/CatalogPage.jsx</code>: combina productos y categorías con búsqueda y filtro en los parámetros de URL <code>buscar</code> y <code>categoria</code>; recibe <code>showHero</code> y <code>offersOnly</code> para reutilizarse en inicio y ofertas.</li>
+<li><code>src/pages/ProductPage.jsx</code>: consulta el identificador de la ruta y mantiene localmente cantidad y mensajes.</li>
+<li><code>src/pages/AuthPages.jsx</code>: contiene <code>AuthPage</code> y <code>ProfilePage</code>, con formularios de acceso, registro y perfil; el perfil muestra el historial propio.</li>
+<li><code>src/pages/CartPages.jsx</code>: contiene <code>CartPage</code>, <code>CheckoutPage</code>, <code>Receipt</code>, <code>SuccessPage</code> y <code>PaymentErrorPage</code>; separa la edición del carrito, datos de entrega y resultado simulado.</li>
+<li><code>src/pages/ContactPage.jsx</code>, <code>InfoPages.jsx</code> y <code>src/data/articles.js</code>: contacto, categorías, nosotros, blog, artículos y página no encontrada.</li>
+<li><code>src/pages/AdminPages.jsx</code>: agrupa rutas y componentes de resumen, formularios de producto y usuario, categorías, pedidos, comprobantes, reportes y perfil administrativo.</li>
+</ul>
+<p>Esta separación permite cambiar una regla, como el límite de cantidad, en el servicio y comprobarla independientemente de la apariencia. Los formularios controlados representan cada valor en estado React; las validaciones devuelven errores visibles en la interfaz. Las operaciones generan un estado candidato y lo persisten antes de publicarlo; un error de almacenamiento evita publicar una compra incompleta. Los datos compartidos se guardan juntos bajo <code>vesper_store_v2</code> y la sesión de la pestaña bajo <code>vesper_session</code>.</p>
+<h3>7.1 Modelo de datos</h3>
+<table>
+<thead>
+<tr>
+<th>Entidad</th>
+<th>Datos principales y relaciones</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Producto</td>
+<td><code>id</code>, <code>nombre</code>, <code>categoria</code>, <code>precio</code>, <code>descripcion</code>, <code>imagen</code>, <code>stock</code>, <code>descuento</code>. La categoría debe corresponder a una categoría existente.</td>
+</tr>
+<tr>
+<td>Categoría</td>
+<td><code>id</code>, <code>nombre</code>. Agrupa productos para navegación y administración.</td>
+</tr>
+<tr>
+<td>Usuario</td>
+<td><code>id</code>, <code>nombre</code>, <code>email</code>, <code>password</code> de demostración, <code>role</code>, <code>telefono</code>, <code>direccion</code>, <code>comuna</code>, <code>region</code>.</td>
+</tr>
+<tr>
+<td>Sesión</td>
+<td>Identidad y datos permitidos de la cuenta activa, sin contraseña. Se mantiene por pestaña.</td>
+</tr>
+<tr>
+<td>Línea de carrito</td>
+<td><code>productId</code>, <code>cantidad</code>. Obtiene precio y disponibilidad del producto vigente.</td>
+</tr>
+<tr>
+<td>Pedido</td>
+<td><code>id</code>, <code>fecha</code>, <code>userId</code> opcional, <code>cliente</code>, <code>items</code>, <code>subtotal</code>, <code>envio</code>, <code>total</code>. Cada ítem conserva nombre, precio y cantidad al confirmar.</td>
+</tr>
+<tr>
+<td>Consulta</td>
+<td>Datos validados del formulario de contacto, registrados localmente.</td>
+</tr>
+</tbody></table>
+<p>El total se calcula con el precio unitario aplicable, incluyendo el descuento del producto, multiplicado por la cantidad, más el costo de entrega. La compra se valida nuevamente al confirmar para evitar confirmar productos inexistentes o cantidades superiores al stock.</p>
+<h3>7.2 Restricciones de almacenamiento</h3>
+<p>La persistencia no se comparte entre computadoras o navegadores. Limpiar los datos del sitio elimina la información local. <code>localStorage</code> no reemplaza una base de datos segura; cualquier usuario con herramientas del navegador puede inspeccionarlo o modificarlo. No deben utilizarse datos personales ni contraseñas reales durante la demostración.</p>
+<h2>8. Relación con la rúbrica</h2>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Evidencia a presentar</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE2.1.1 e IE2.1.3</td>
+<td>Estructura React y navegación funcional; explicación del motivo de la migración y separación de responsabilidades.</td>
+</tr>
+<tr>
+<td>IE2.1.2 e IE2.1.4</td>
+<td>Un componente reutilizable con props, un formulario con estado controlado y la misma vista a diferentes anchos con Bootstrap.</td>
+</tr>
+<tr>
+<td>IE2.2.1 e IE2.2.2</td>
+<td>Suite Jasmine/Karma, al menos 10 pruebas correctas y ejemplos de renderizado, estado y eventos.</td>
+</tr>
+<tr>
+<td>IE2.3.1 e IE2.3.2</td>
+<td>Configuración del entorno, aislamiento mediante datos de prueba o mocks, ejecución y análisis del informe de testing.</td>
+</tr>
+</tbody></table>
+<p>La configuración está en <code>karma.conf.cjs</code>; <code>tests/index.js</code> carga las especificaciones y los módulos de <code>src</code> para que las vistas sin ejecutar también aparezcan en el denominador de cobertura. <code>src/main.jsx</code>, que monta la aplicación en el navegador, queda fuera de esa instrumentación. Los casos se agrupan en <code>tests/components.spec.jsx</code>, <code>tests/admin.spec.jsx</code> y <code>tests/store.spec.js</code>, con utilidades DOM en <code>tests/helpers.jsx</code>.</p>
+<p>La cobertura se debe expresar con precisión: cantidad de casos ejecutados, funcionalidades y escenarios comprobados, y, si se genera instrumentación, porcentajes medidos sobre los archivos incluidos. Ninguno de esos valores equivale por sí solo a ausencia total de defectos.</p>
+<h2>9. Entregables y revisión de cierre</h2>
+<ol>
+<li>Repositorio público actualizado: <code>https://github.com/Go-tei/vesper</code>.</li>
+<li>Proyecto frontend comprimido con fuentes, archivos de configuración e instrucciones; excluir dependencias instaladas y datos privados.</li>
+<li>Esta ERS V2 con integrantes y fecha completados.</li>
+<li>Informe de cobertura de testing con casos, resultados, alcance y limitaciones reales.</li>
+<li>Presentación de 15 minutos y preparación para 5 minutos de preguntas individuales.</li>
+</ol>
+<p>Antes de presentar, verificar el catálogo público, ambos resultados del checkout, los mantenedores con cuenta administradora, la persistencia después de recargar y el funcionamiento en diferentes tamaños de pantalla. Ejecutar nuevamente los comandos de prueba y build documentados en el repositorio y conservar sus resultados.</p>
+</body></html>

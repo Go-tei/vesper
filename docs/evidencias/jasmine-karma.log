@@ -1,0 +1,83 @@
+
+> vesper@2.0.0 test
+> karma start karma.conf.cjs --single-run
+
+Webpack bundling...
+webpack compiled successfully
+[32m05 11 2026 13:55:02.483:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
+[32m05 11 2026 13:55:02.484:INFO [launcher]: [39mLaunching browsers ChromiumHeadless with concurrency unlimited
+[32m05 11 2026 13:55:02.487:INFO [launcher]: [39mStarting browser ChromeHeadless
+[32m05 11 2026 13:55:03.435:INFO [Chrome Headless 155.0.0.0 (Linux 0.0.0)]: [39mConnected on socket RJhR3qETNPg-vtblAAAA with id 60355822
+Chrome Headless 155.0.0.0 (Linux 0.0.0): Executed 0 of 56[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 1 of 56[32m SUCCESS[39m (0 secs / 0.03 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 2 of 56[32m SUCCESS[39m (0 secs / 0.046 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 3 of 56[32m SUCCESS[39m (0 secs / 0.067 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 4 of 56[32m SUCCESS[39m (0 secs / 0.094 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 5 of 56[32m SUCCESS[39m (0 secs / 0.098 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 6 of 56[32m SUCCESS[39m (0 secs / 0.125 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 7 of 56[32m SUCCESS[39m (0 secs / 0.134 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 8 of 56[32m SUCCESS[39m (0 secs / 0.136 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 9 of 56[32m SUCCESS[39m (0 secs / 0.137 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 10 of 56[32m SUCCESS[39m (0 secs / 0.14 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 11 of 56[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 12 of 56[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 13 of 56[32m SUCCESS[39m (0 secs / 0.143 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 14 of 56[32m SUCCESS[39m (0 secs / 0.144 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 15 of 56[32m SUCCESS[39m (0 secs / 0.144 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 16 of 56[32m SUCCESS[39m (0 secs / 0.145 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 17 of 56[32m SUCCESS[39m (0 secs / 0.146 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 18 of 56[32m SUCCESS[39m (0 secs / 0.148 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 19 of 56[32m SUCCESS[39m (0 secs / 0.149 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 20 of 56[32m SUCCESS[39m (0 secs / 0.15 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 21 of 56[32m SUCCESS[39m (0 secs / 0.151 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 22 of 56[32m SUCCESS[39m (0 secs / 0.156 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 23 of 56[32m SUCCESS[39m (0 secs / 0.16 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 24 of 56[32m SUCCESS[39m (0 secs / 0.161 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 25 of 56[32m SUCCESS[39m (0 secs / 0.164 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 26 of 56[32m SUCCESS[39m (0 secs / 0.167 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 27 of 56[32m SUCCESS[39m (0 secs / 0.17 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 28 of 56[32m SUCCESS[39m (0 secs / 0.172 secs)
+(node:3762) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 29 of 56[32m SUCCESS[39m (0 secs / 0.175 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 30 of 56[32m SUCCESS[39m (0 secs / 0.178 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 31 of 56[32m SUCCESS[39m (0 secs / 0.181 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 32 of 56[32m SUCCESS[39m (0 secs / 0.182 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 33 of 56[32m SUCCESS[39m (0 secs / 0.186 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 34 of 56[32m SUCCESS[39m (0 secs / 0.191 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 35 of 56[32m SUCCESS[39m (0 secs / 0.199 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 36 of 56[32m SUCCESS[39m (0 secs / 0.204 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 37 of 56[32m SUCCESS[39m (0 secs / 0.218 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 38 of 56[32m SUCCESS[39m (0 secs / 0.224 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 39 of 56[32m SUCCESS[39m (0 secs / 0.227 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 40 of 56[32m SUCCESS[39m (0 secs / 0.228 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 41 of 56[32m SUCCESS[39m (0 secs / 0.229 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 42 of 56[32m SUCCESS[39m (0 secs / 0.229 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 43 of 56[32m SUCCESS[39m (0 secs / 0.23 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 44 of 56[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 45 of 56[32m SUCCESS[39m (0 secs / 0.232 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 46 of 56[32m SUCCESS[39m (0 secs / 0.233 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 47 of 56[32m SUCCESS[39m (0 secs / 0.233 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 48 of 56[32m SUCCESS[39m (0 secs / 0.239 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 49 of 56[32m SUCCESS[39m (0 secs / 0.24 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 50 of 56[32m SUCCESS[39m (0 secs / 0.241 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 51 of 56[32m SUCCESS[39m (0 secs / 0.241 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 52 of 56[32m SUCCESS[39m (0 secs / 0.242 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 53 of 56[32m SUCCESS[39m (0 secs / 0.244 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 54 of 56[32m SUCCESS[39m (0 secs / 0.245 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 55 of 56[32m SUCCESS[39m (0 secs / 0.246 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 56 of 56[32m SUCCESS[39m (0 secs / 0.247 secs)
+[1A[2KChrome Headless 155.0.0.0 (Linux 0.0.0): Executed 56 of 56[32m SUCCESS[39m (0.294 secs / 0.247 secs)
+[32mTOTAL: 56 SUCCESS[39m
+
+=============================== Coverage summary ===============================
+Statements   : 69.09% ( 494/715 )
+Branches     : 68.77% ( 392/570 )
+Functions    : 66.42% ( 182/274 )
+Lines        : 70.6% ( 442/626 )
+================================================================================
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

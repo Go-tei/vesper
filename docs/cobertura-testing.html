@@ -1,0 +1,325 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>VESPER · cobertura-testing</title><style>@page {size:A4;margin:18mm 15mm}body{font:10pt/1.5 Arial,sans-serif;color:#202020}h1{font-size:23pt;border-bottom:3px solid #a4141d;padding-bottom:12px}h2{font-size:15pt;margin-top:24px;break-after:avoid}h3{font-size:12pt;break-after:avoid}table{border-collapse:collapse;width:100%;font-size:8pt;margin:12px 0}th,td{border:1px solid #ccc;text-align:left;padding:6px;vertical-align:top;overflow-wrap:anywhere}th{background:#efede9}tr{break-inside:avoid}pre{white-space:pre-wrap;background:#efede9;padding:12px;font-size:8pt;overflow-wrap:anywhere}code{font-size:.9em;overflow-wrap:anywhere}a{color:#8a1520}p,li{orphans:3;widows:3}</style></head><body><h1>Cobertura y proceso de testing — VESPER, entrega 2</h1>
+<h2>Resultado observado</h2>
+<p>Ejecución del <strong>5 de noviembre de 2026</strong>, mediante <code>npm test</code>: <strong>56 pruebas ejecutadas, 56 aprobadas, 0 fallidas</strong>. Se ejecutaron con Karma 6.4.4 y Jasmine en Chromium Headless 155, sobre Linux y Node.js 24.22.1. Este resultado corresponde al código comprobado en esta entrega; cambios posteriores requieren una nueva ejecución.</p>
+<table>
+<thead>
+<tr>
+<th>Archivo de pruebas</th>
+<th align="right">Casos</th>
+<th>Alcance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tests/components.spec.jsx</code></td>
+<td align="right">32</td>
+<td>Props, renderizado, estado, DOM, filtros, formularios, carrito, checkout, resultados de pago y acceso</td>
+</tr>
+<tr>
+<td><code>tests/admin.spec.jsx</code></td>
+<td align="right">7</td>
+<td>Guardas de administración, navegación, creación de productos y CRUD de categorías</td>
+</tr>
+<tr>
+<td><code>tests/store.spec.js</code></td>
+<td align="right">17</td>
+<td>Persistencia, migración, autenticación, CRUD, stock, validación y atomicidad de compras</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td align="right"><strong>56</strong></td>
+<td><strong>Todos aprobados</strong></td>
+</tr>
+</tbody></table>
+<p>Resumen de la salida real:</p>
+<pre><code class="language-text">TOTAL: 56 SUCCESS
+Statements   : 69.09% ( 494/715 )
+Branches     : 68.77% ( 392/570 )
+Functions    : 66.42% ( 182/274 )
+Lines        : 70.6% ( 442/626 )
+</code></pre>
+<h2>Cobertura instrumental</h2>
+<p>La instrumentación Babel/Istanbul incluye <strong>todos los módulos JavaScript/JSX de <code>src</code></strong>, aunque no tengan pruebas directas. <code>tests/index.js</code> los incorpora explícitamente al denominador. Se excluye únicamente <code>src/main.jsx</code>, que monta la raíz de React, además de CSS, imágenes, dependencias y los propios tests. Cargar un módulo de datos ejecuta sus declaraciones; una cobertura alta en esos archivos no implica que sus contenidos hayan sido revisados semánticamente.</p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th align="right">Elementos cubiertos / total</th>
+<th align="right">Cobertura</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sentencias</td>
+<td align="right">494 / 715</td>
+<td align="right">69.09 %</td>
+</tr>
+<tr>
+<td>Ramas</td>
+<td align="right">392 / 570</td>
+<td align="right">68.77 %</td>
+</tr>
+<tr>
+<td>Funciones</td>
+<td align="right">182 / 274</td>
+<td align="right">66.42 %</td>
+</tr>
+<tr>
+<td>Líneas</td>
+<td align="right">442 / 626</td>
+<td align="right">70.6 %</td>
+</tr>
+</tbody></table>
+<p>Los porcentajes de sentencias, ramas, funciones y líneas miden cosas distintas. Una línea JSX puede contener varias decisiones y callbacks, por lo que no debe equipararse el porcentaje de líneas con una validación completa de la aplicación.</p>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th align="right">Sentencias</th>
+<th align="right">Ramas</th>
+<th align="right">Líneas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src/App.jsx</code></td>
+<td align="right">0 %</td>
+<td align="right">No aplica</td>
+<td align="right">0 %</td>
+</tr>
+<tr>
+<td><code>src/components/Feedback.jsx</code></td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/components/Field.jsx</code></td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/components/Layout.jsx</code></td>
+<td align="right">7.69 %</td>
+<td align="right">18.18 %</td>
+<td align="right">7.69 %</td>
+</tr>
+<tr>
+<td><code>src/components/ProductCard.jsx</code></td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/components/ProductList.jsx</code></td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/context/ShopContext.jsx</code></td>
+<td align="right">85.71 %</td>
+<td align="right">33.33 %</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/data/articles.js</code></td>
+<td align="right">100 %</td>
+<td align="right">No aplica</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/data/seed.js</code></td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/pages/AdminPages.jsx</code></td>
+<td align="right">49.73 %</td>
+<td align="right">41.37 %</td>
+<td align="right">54.08 %</td>
+</tr>
+<tr>
+<td><code>src/pages/AuthPages.jsx</code></td>
+<td align="right">44.18 %</td>
+<td align="right">58.49 %</td>
+<td align="right">46.15 %</td>
+</tr>
+<tr>
+<td><code>src/pages/CartPages.jsx</code></td>
+<td align="right">89.65 %</td>
+<td align="right">73.8 %</td>
+<td align="right">90.56 %</td>
+</tr>
+<tr>
+<td><code>src/pages/CatalogPage.jsx</code></td>
+<td align="right">69.56 %</td>
+<td align="right">89.28 %</td>
+<td align="right">69.56 %</td>
+</tr>
+<tr>
+<td><code>src/pages/ContactPage.jsx</code></td>
+<td align="right">100 %</td>
+<td align="right">66.66 %</td>
+<td align="right">100 %</td>
+</tr>
+<tr>
+<td><code>src/pages/InfoPages.jsx</code></td>
+<td align="right">0 %</td>
+<td align="right">0 %</td>
+<td align="right">0 %</td>
+</tr>
+<tr>
+<td><code>src/pages/ProductPage.jsx</code></td>
+<td align="right">0 %</td>
+<td align="right">0 %</td>
+<td align="right">0 %</td>
+</tr>
+<tr>
+<td><code>src/services/store.js</code></td>
+<td align="right">87.13 %</td>
+<td align="right">82.65 %</td>
+<td align="right">87.08 %</td>
+</tr>
+</tbody></table>
+<p>«No aplica» indica que el módulo no contiene decisiones instrumentables para esa métrica.</p>
+<p>Los informes generados son <code>coverage/index.html</code>, <code>coverage/lcov.info</code> y <code>coverage/coverage-summary.json</code>. Estos archivos se regeneran al ejecutar la suite y no forman parte del código versionado.</p>
+<h2>Relación con los requisitos y casos demostrables</h2>
+<table>
+<thead>
+<tr>
+<th>Requisito / comportamiento</th>
+<th>Evidencia automatizada</th>
+<th>Resultado esperado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Renderizado de listas</td>
+<td><code>renderiza todos los productos de una lista</code></td>
+<td>Todos los productos entregados aparecen en el DOM</td>
+</tr>
+<tr>
+<td>Props de componentes</td>
+<td><code>renderiza los datos del producto recibidos por props</code></td>
+<td>Nombre, imagen y precio reflejan el producto</td>
+</tr>
+<tr>
+<td>Eventos de usuario</td>
+<td><code>ejecuta una sola vez el callback al agregar el producto</code></td>
+<td>Un clic llama a <code>onAdd</code> con el identificador correcto</td>
+</tr>
+<tr>
+<td>Estado controlado</td>
+<td><code>actualiza el DOM cuando cambia el estado de un formulario controlado</code></td>
+<td>El campo y el texto visible reflejan la entrada</td>
+</tr>
+<tr>
+<td>Renderizado condicional</td>
+<td><code>oculta el mensaje de error cuando no hay error</code> y <code>muestra un error condicional con rol de alerta</code></td>
+<td>Solo se presenta un error si existe</td>
+</tr>
+<tr>
+<td>Disponibilidad</td>
+<td><code>bloquea la compra de un producto sin stock</code></td>
+<td>Botón deshabilitado y callback sin ejecutar</td>
+</tr>
+<tr>
+<td>Filtros y ofertas</td>
+<td>Casos de búsqueda, categoría, ofertas y ausencia de coincidencias</td>
+<td>La lista responde a los criterios elegidos</td>
+</tr>
+<tr>
+<td>Formularios React</td>
+<td>Casos de contacto correcto y validación fallida</td>
+<td>Se envían datos controlados, se presenta el resultado y se conserva el texto ante error</td>
+</tr>
+<tr>
+<td>Carrito</td>
+<td>Casos de subtotal, cantidad, eliminación y carrito vacío</td>
+<td>Total coherente y llamadas al servicio con el producto seleccionado</td>
+</tr>
+<tr>
+<td>Checkout</td>
+<td>Autocompletado, retiro, aprobación y rechazo</td>
+<td>Datos de perfil precargados, envío coherente y navegación al resultado correspondiente</td>
+</tr>
+<tr>
+<td>Compra exitosa</td>
+<td><code>genera pedido con descuento, envío e instantánea independiente del catálogo</code></td>
+<td>Descuenta stock, vacía carrito y conserva el pedido aunque cambie el catálogo</td>
+</tr>
+<tr>
+<td>Compra rechazada</td>
+<td><code>conserva carrito, stock y pedidos al rechazar un pago</code></td>
+<td>No modifica existencias, carrito ni pedidos</td>
+</tr>
+<tr>
+<td>Persistencia</td>
+<td>Migración, recarga y almacenamiento corrupto</td>
+<td>Recupera datos válidos y conserva cambios previos</td>
+</tr>
+<tr>
+<td>CRUD administrativo</td>
+<td>Pruebas de producto, categorías y usuarios</td>
+<td>Alta, lectura, modificación y eliminación coherentes</td>
+</tr>
+<tr>
+<td>Control de acceso local</td>
+<td>Casos de visitante, cliente y administrador</td>
+<td>El visitante va al login y el cliente no ve los mantenedores</td>
+</tr>
+<tr>
+<td>Acceso de usuario</td>
+<td>Credenciales inválidas, contraseñas distintas y login correcto</td>
+<td>Errores visibles y navegación al perfil tras ingresar</td>
+</tr>
+<tr>
+<td>Manejo de fallos</td>
+<td><code>conserva el estado si la persistencia falla durante una compra</code></td>
+<td>Un error de almacenamiento no deja una compra parcialmente aplicada</td>
+</tr>
+</tbody></table>
+<p>Esta matriz proporciona más de los diez casos solicitados por la rúbrica y contempla entradas válidas, inválidas y estados vacíos.</p>
+<h2>Herramientas y configuración</h2>
+<ul>
+<li><strong>Jasmine</strong> define suites (<code>describe</code>), casos (<code>it</code>), expectativas y espías (<code>jasmine.createSpy</code> / <code>spyOn</code>).</li>
+<li><strong>Karma</strong> inicia el servidor de pruebas y abre un navegador real. <code>karma-chrome-launcher</code> usa Chromium/Chrome Headless.</li>
+<li><strong>Webpack y Babel</strong> transforman JSX y módulos para el navegador. <code>babel-plugin-istanbul</code> instrumenta únicamente el código de aplicación.</li>
+<li><strong>React <code>createRoot</code> y <code>act</code></strong> montan los componentes, aplican eventos y esperan las actualizaciones antes de comprobar el DOM.</li>
+<li><strong>MemoryRouter</strong> reproduce navegación sin depender de un servidor de rutas.</li>
+<li><strong>ShopProvider</strong> recibe un store aislado o una instantánea estable, lo que permite probar las vistas sin cuentas reales.</li>
+</ul>
+<p><code>tests/helpers.jsx</code> crea y desmonta una raíz por caso. Los cambios de campos usan el setter nativo y eventos <code>input</code>/<code>change</code>; los formularios reciben un evento <code>submit</code> cancelable. Esto comprueba el comportamiento observable de los componentes.</p>
+<h2>Mocks y aislamiento</h2>
+<p>Las pruebas de servicio crean almacenamiento en memoria en cada <code>beforeEach</code>, sin modificar los datos de un usuario real. Las de administración combinan ese store aislado con espías que delegan las mutaciones al mismo store para observar el renderizado tras CRUD.</p>
+<p>Los casos de contacto, acceso y navegación de pago simulan respuestas y errores del servicio con <code>spyOn</code>. Comprueban la reacción de la interfaz; las reglas del pago y la persistencia se comprueban por separado con el servicio real e instancias aisladas. Así se distingue un fallo de validación del servicio de un fallo de presentación o navegación.</p>
+<p><code>afterEach</code> desmonta React y retira el contenedor del DOM. Jasmine restaura los espías entre casos. La semilla de productos se mantiene independiente de los datos de cada prueba.</p>
+<h2>Reproducción y regresión</h2>
+<pre><code class="language-bash">npm ci
+npm test
+npm run build
+</code></pre>
+<p>Para mantener el navegador escuchando mientras se trabaja:</p>
+<pre><code class="language-bash">npm run test:watch
+</code></pre>
+<p>Se requiere Node.js 22.12 o superior y Chrome/Chromium instalado. El archivo <code>karma.conf.cjs</code> detecta <code>/usr/bin/chromium</code>; en otra ubicación se indica explícitamente:</p>
+<pre><code class="language-bash">CHROME_BIN=/ruta/al/chromium npm test
+</code></pre>
+<p>En Windows PowerShell puede establecerse <code>$env:CHROME_BIN</code> antes del comando. En este entorno aislado se habilitó acceso de red para que Karma pudiera escuchar en el puerto local; no se enviaron datos del proyecto a un servicio de testing.</p>
+<p>Proceso aplicado: identificar comportamiento y criterio de aceptación; preparar datos aislados; ejecutar la acción; comprobar resultado; corregir el defecto si aparece; volver a ejecutar los casos afectados y finalmente toda la suite. Antes de entregar, repetir la suite y la compilación sobre la versión final. Si falla un test, revisar su nombre, la expectativa y el stack del navegador. Para localizar rutas sin ejecutar, abrir el informe HTML de cobertura.</p>
+<h2>Límites y verificación manual complementaria</h2>
+<p>La suite <strong>no acredita cobertura del 100 %</strong>. El layout, las páginas informativas y el detalle de producto tienen ejecución automatizada limitada o nula; el panel administrativo no tiene todos sus formularios y reportes cubiertos. Las rutas principales se prueban parcialmente. El CSS responsivo, contraste, navegación por teclado, impresión y lectura de pantalla requieren revisión visual y manual adicional.</p>
+<p>El servicio es una base de datos simulada en JavaScript. Estas pruebas no verifican una API, correo, pasarela bancaria ni seguridad de servidor. Las guardas locales y los roles son parte de la demostración académica; no constituyen autorización segura para producción.</p>
+<p>Recorrido manual complementario recomendado: tienda sin sesión; búsqueda y categorías; cuenta de cliente y perfil; carrito y checkout con despacho y retiro; pago rechazado y reintento; compra exitosa y comprobante; administración de productos, categorías y usuarios; pedido y reportes. Repetir en móvil, tableta y escritorio, recargando después de cambiar datos para comprobar persistencia. Los resultados manuales o E2E deben registrarse por separado y no incrementan estos porcentajes de cobertura unitaria.</p>
+<h2>Comprobación adicional en navegador real</h2>
+<p>El 5 de noviembre de 2026 se ejecutó un recorrido automatizado con Playwright y Chromium contra la compilación de producción (<code>npm run preview</code>, puerto 4173): <strong>48 comprobaciones aprobadas, sin errores de consola o de página</strong>. El registro está en <code>docs/evidencias/verificacion-navegador.json</code>. Este recorrido se ejecutó con las herramientas del entorno de desarrollo y no sustituye ni se suma a las 56 pruebas de Jasmine/Karma.</p>
+<p>Se comprobaron catálogo público y filtros, detalle, carrito persistente y cantidades, validación de checkout, pago rechazado sin alterar carrito/stock/pedidos, compra aprobada y comprobante, perfil y autocompletado, historial, roles, CRUD de administración, reportes, registro y contacto.</p>
+<p>Se midió ausencia de desbordamiento horizontal de la página a <strong>390, 768 y 1440 px</strong>, incluyendo carrito con productos, checkout y administración. Se corrigió el posicionamiento de los textos accesibles de las tablas administrativas para mantenerlos dentro del contenedor desplazable. Las tablas pueden tener desplazamiento interno intencional en móvil.</p>
+<p>Capturas guardadas:</p>
+<ul>
+<li><code>docs/evidencias/inicio-escritorio.png</code></li>
+<li><code>docs/evidencias/inicio-movil.png</code></li>
+<li><code>docs/evidencias/checkout-escritorio.png</code></li>
+<li><code>docs/evidencias/administracion-escritorio.png</code></li>
+</ul>
+<p>Estas comprobaciones no son una auditoría completa de accesibilidad ni incluyen todas las combinaciones de navegadores y tamaños. Sus resultados no modifican los porcentajes instrumentados de cobertura unitaria.</p>
+</body></html>
