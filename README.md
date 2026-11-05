@@ -77,8 +77,4 @@ La navegación usa **HashRouter** (`/#/productos`), por lo que funciona en hosti
 
 - [ERS actualizado V2](docs/ERS-v2.md) · [PDF](docs/ERS-v2.pdf): requisitos, aceptación y alcance.
 - [Cobertura del testing](docs/cobertura-testing.md) · [PDF](docs/cobertura-testing.pdf): casos, resultados medidos y límites.
-- [Guía de presentación](docs/guia-presentacion.md) · [PDF](docs/guia-presentacion.pdf): recorrido de 15 minutos y preguntas técnicas.
-- [Guion de Fernando, Enzo y Marcelo](docs/guion-Fernando-Enzo-Marcelo.md) · [PDF para presentar](docs/guion-Fernando-Enzo-Marcelo.pdf): exposición repartida en tres bloques de cinco minutos.
 - [Publicación y revisión en GitHub](docs/subir-a-github.md): rama de entrega, pull request y pasos para integrarlo en `main`.
-
-La pauta solicita una base simulada en JavaScript. No se ha entregado ni implementado un backend HTTP o una pasarela de pagos. Si el docente exige integración real adicional, será una etapa distinta. Los comprobantes de esta aplicación son académicos y no tienen validez tributaria.
